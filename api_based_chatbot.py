@@ -163,12 +163,6 @@ def app():
             This system redacts sensitive info like phone numbers from prescription images to protect user privacy while providing useful text.
             This way you can make the chatbot for a specific case and for general case visit the multilingual chatbot
             """)
-
-            if st.form_submit_button("Hope it helped"):
-                st.write("Feel free to customise and use it. Push any improvements to the repo!")
-                linkedin_url = "https://www.linkedin.com/in/deekshith2912/"
-                linkedin_link = f"[Deekshith B]({linkedin_url})"
-                st.markdown(f"###### Developed by {linkedin_link}")
             
         
 
