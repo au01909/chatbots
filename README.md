@@ -188,13 +188,6 @@ Push improvements to the repository!
 
 ---
 
-## 👨‍💻 Developer
-
-**Deekshith B**  
-[LinkedIn Profile](https://www.linkedin.com/in/deekshith2912/)
-
----
-
 ## 📝 License
 
 Feel free to customize and use these chatbots for your needs.
