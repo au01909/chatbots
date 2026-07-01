@@ -111,10 +111,7 @@ def app():
             st.write("  - :orange[About this Chatbot]")
             st.write("Type any word from the list, and the chatbot will provide an answer. If there's a spelling mistake or an unlisted word, it will respond with not sure response. The chatbot matches keywords and gives an output only if a match is found.  \n  It is case-insensitive, as it converts the input to lowercase before checking.")
             if st.form_submit_button("Hope it helped"):
-                st.write("Feel free to customise and use it. Push any improvements to the repo!")
-                linkedin_url = "https://www.linkedin.com/in/deekshith2912/"
-                linkedin_link = f"[Deekshith B]({linkedin_url})"
-                st.markdown(f"###### Developed by {linkedin_link}")
+                st.write("Feel free to customise and use it. Push any improvements to the repo!"
 
 
     
