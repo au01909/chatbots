@@ -1,204 +1,705 @@
-# 🤖 Chatbots Repository
 
-A collection of AI-powered chatbots built with Streamlit and Google Gemini API, each designed for specific use cases.
 
-## 📋 Overview
+# 🤖 The Chatbot Hub
 
-This repository contains multiple chatbot applications that leverage the Google Gemini API to provide intelligent, context-aware responses for different domains. All applications are built using Python and Streamlit for a seamless web interface.
+> A comprehensive collection of chatbot implementations built with **Python**, **Streamlit**, **Google Gemini**, **LangChain**, and **Natural Language Processing**.
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-red)
+![Gemini](https://img.shields.io/badge/Google-Gemini-blue)
+![LangChain](https://img.shields.io/badge/LangChain-RAG-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
-## 🚀 Chatbots Included
+## Overview
 
-### 1. **Data Analysis Chatbot** (`data_analysis_chatbot.py`)
+The Chatbot Hub is a collection of multiple chatbot architectures implemented in Python. Instead of demonstrating only one conversational agent, this project showcases how different chatbot technologies solve different real-world problems.
 
-An interactive tool for exploring, visualizing, and analyzing CSV datasets using natural language queries.
+Each chatbot uses a different approach:
 
-#### Features:
-- 📁 **CSV Upload & Preview**: Upload and preview datasets with instant validation
-- 📊 **Smart Chart Generation**: Multiple chart types including:
-  - Histograms
-  - Bar Charts
-  - Pie Charts
-  - Line Plots
-  - Scatter Plots
-  - Box Plots
-- 🧠 **AI Chart Suggestions**: Gemini provides intelligent recommendations for optimal chart types based on your data
-- 🎨 **Natural Language Chart Requests**: Describe the chart you want in plain English, and the AI generates it
-- 📈 **Correlation Heatmaps**: Visualize relationships between numeric variables
-- 📊 **Summary Statistics**: View comprehensive statistical summaries of your data
-- 💬 **Natural Language Queries**: Ask questions about your data and get AI-powered answers
+* Rule-Based Systems
+* Keyword Matching
+* Large Language Models (LLMs)
+* Retrieval-Augmented Generation (RAG)
+* Voice AI
+* Multilingual Translation
+* AI-powered Data Analysis
 
-#### Requirements:
-- Python 3.x
-- pandas
-- matplotlib
-- seaborn
-- plotly
-- google-generativeai
-- streamlit
-- toml
+The application is built using **Streamlit**, allowing users to switch seamlessly between chatbot implementations from a single interface. 
 
-#### Usage:
+---
+
+# Repository Structure
+
+```text
+chatbots/
+│
+├── main.py                      # Main application
+├── home.py                      # Landing page
+│
+├── rule_based_chatbot.py
+├── keyword_based_chatbot.py
+├── api_based_chatbot.py
+├── rag_chatbot.py
+├── data_analysis_chatbot.py
+├── multi_lingual_chatbot.py
+├── voice_chatbot.py
+│
+├── config.toml
+├── requirements.txt
+│
+├── assets/
+│
+└── README.md
+```
+
+---
+
+# Architecture
+
+```text
+                            User
+                              │
+                              ▼
+                   Streamlit Web Interface
+                              │
+                ┌─────────────┼──────────────┐
+                │             │              │
+                ▼             ▼              ▼
+        Navigation Menu   Session State   UI Components
+                │
+        Select Chatbot
+                │
+ ┌──────────────┼─────────────────────────────────────────────┐
+ │              │              │            │                 │
+ ▼              ▼              ▼            ▼                 ▼
+Rule Bot   Keyword Bot     Gemini Bot   RAG Bot      Voice Assistant
+ │              │              │            │                 │
+Rules       Dictionary      Gemini API  FAISS          Speech Recognition
+Matching    Matching            │        Embeddings           │
+ │              │              │            │                 │
+ └──────────────┴──────────────┴────────────┴─────────────────┘
+                              │
+                              ▼
+                        Streamlit Output
+```
+
+---
+
+# 🚀 Chatbots Included
+
+---
+
+# 1. 📊 Data Analysis Chatbot (`data_analysis_chatbot.py`)
+
+An AI-powered data analysis assistant that enables users to upload CSV datasets, generate interactive visualizations, and ask natural language questions about their data. It combines traditional analytics libraries with Google's Gemini model to simplify exploratory data analysis. 
+
+## ✨ Features
+
+* 📁 CSV Upload & Preview
+
+  * Upload datasets instantly
+  * Automatic validation
+  * Interactive dataframe preview
+
+* 📊 Smart Chart Generator
+
+  * Histogram
+  * Bar Chart
+  * Pie Chart
+  * Scatter Plot
+  * Line Plot
+  * Box Plot
+
+* 🤖 Gemini Chart Recommendation
+
+  * AI suggests the best visualization
+  * Explains why the chart is suitable
+
+* 💬 Natural Language Visualization
+
+  * Type:
+
+    ```
+    Show a scatter plot of Age vs Salary
+    ```
+  * AI automatically generates the requested chart.
+
+* 📈 Correlation Heatmap
+
+  * Detect relationships between numerical variables
+  * Interactive statistical visualization
+
+* 📊 Summary Statistics
+
+  * Mean
+  * Median
+  * Standard Deviation
+  * Missing values
+  * Distribution insights
+
+* 🧠 AI Dataset Analysis
+
+  * Ask questions like:
+
+    * Which column has the highest variance?
+    * Explain this dataset.
+    * Find interesting insights.
+
+---
+
+## ⚙️ How It Works
+
+```text
+CSV Upload
+      │
+      ▼
+Pandas DataFrame
+      │
+      ├───────────────┐
+      ▼               ▼
+Statistics      Gemini Analysis
+      │               │
+      ▼               ▼
+Charts      Chart Recommendation
+      │               │
+      └───────┬───────┘
+              ▼
+      Interactive Dashboard
+```
+
+---
+
+## 🛠 Requirements
+
+* Python 3.x
+* Streamlit
+* Pandas
+* Plotly
+* Matplotlib
+* Seaborn
+* Google Gemini API
+* TOML
+
+---
+
+## ▶️ Usage
+
 ```bash
 streamlit run data_analysis_chatbot.py
 ```
 
 ---
 
-### 2. **AI-Powered Neurorehabilitation Assistant** (`api_based_chatbot.py`)
+# 2. 🏥 AI-Powered Neurorehabilitation Assistant (`api_based_chatbot.py`)
 
-A specialized chatbot designed for creating personalized neurorehabilitation plans using medical information and prescription analysis.
+A healthcare chatbot that assists patients and therapists by generating personalized neurorehabilitation plans using Google Gemini. The chatbot can process patient information manually or extract prescription details using OCR before generating structured recovery plans. 
 
-#### Features:
-- 📝 **Patient Information Input**: Detailed text input for patient history and goals
-- 🖼️ **Prescription Image Upload**: Upload prescription images for automatic text extraction
-- 🔒 **Privacy Protection**: Automatic redaction of sensitive information (phone numbers, etc.)
-- 🏥 **AI-Powered Plan Generation**: Creates detailed 12-week neurorehabilitation plans including:
-  - Initial phase (weeks 1-2)
-  - Intermediate phase (weeks 3-6)
-  - Advanced phase (weeks 7-12)
-- 📋 **Comprehensive Assessment**: Provides clinical assessments, exercise recommendations, and safety precautions
-- 🎨 **Enhanced UI**: Animated interface with gradient text and Lottie animations
-- 📖 **Information Form**: Built-in educational content about the chatbot's capabilities
+---
 
-#### Key Information Requested:
-1. Age, Gender, and diagnosis/injury date
-2. Current symptoms and medical history
-3. Physical goals and activity level
-4. Mobility assessment and aids used
-5. Cognitive and neurological assessment
-6. Psychological concerns
-7. Support system availability
-8. Previous rehabilitation history
+## ✨ Features
 
-#### Requirements:
-- Python 3.x
-- google-generativeai
-- streamlit
-- streamlit-lottie
-- pytesseract
-- Pillow
-- toml
-- Tesseract-OCR (Windows: `C:\Program Files\Tesseract-OCR\tesseract.exe`)
+### 📝 Patient Information Collection
 
-#### Usage:
+Collects:
+
+* Age
+* Gender
+* Diagnosis
+* Injury date
+* Symptoms
+* Medical history
+* Physical goals
+* Current mobility
+* Cognitive assessment
+* Psychological assessment
+* Family support
+* Previous rehabilitation
+
+---
+
+### 📄 Prescription Upload
+
+Users can upload:
+
+* JPG
+* PNG
+* JPEG
+
+The chatbot automatically extracts text using OCR.
+
+---
+
+### 🔒 Privacy Protection
+
+Automatically removes sensitive information such as:
+
+* Phone numbers
+* Personal identifiers
+
+before sending the prompt to Gemini.
+
+---
+
+### 🤖 AI Rehabilitation Planning
+
+Generates a personalized rehabilitation plan covering:
+
+#### Initial Phase (Weeks 1–2)
+
+* Basic mobility
+* Pain management
+* Balance exercises
+
+#### Intermediate Phase (Weeks 3–6)
+
+* Strength training
+* Functional activities
+* Walking practice
+
+#### Advanced Phase (Weeks 7–12)
+
+* Independence training
+* Advanced exercises
+* Daily activity planning
+
+---
+
+### 📋 Comprehensive Clinical Assessment
+
+Provides:
+
+* Patient assessment
+* Exercise schedule
+* Safety precautions
+* Recovery recommendations
+* Lifestyle suggestions
+
+---
+
+### 🎨 Interactive Interface
+
+* Gradient UI
+* Lottie animations
+* Upload preview
+* OCR visualization
+* Extracted text
+* Redacted text
+* AI response generation
+
+---
+
+## ⚙️ How It Works
+
+```text
+Patient Details
+       │
+       ▼
+Prescription Upload
+       │
+       ▼
+OCR (Tesseract)
+       │
+       ▼
+Sensitive Data Redaction
+       │
+       ▼
+Prompt Engineering
+       │
+       ▼
+Google Gemini
+       │
+       ▼
+Personalized
+12-Week Recovery Plan
+```
+
+---
+
+## 📥 Input Information
+
+The chatbot expects:
+
+1. Age
+2. Gender
+3. Diagnosis
+4. Symptoms
+5. Medical history
+6. Physical goals
+7. Mobility assessment
+8. Cognitive assessment
+9. Emotional status
+10. Family support
+11. Previous therapy
+12. Rehabilitation devices
+
+---
+
+## 🛠 Requirements
+
+* Python 3.x
+* Streamlit
+* Google Gemini
+* Streamlit Lottie
+* Pillow
+* PyTesseract
+* TOML
+
+---
+
+## Additional Requirements
+
+### Tesseract OCR
+
+Windows
+
+```
+C:\Program Files\Tesseract-OCR\tesseract.exe
+```
+
+Linux
+
+```bash
+sudo apt install tesseract-ocr
+```
+
+Mac
+
+```bash
+brew install tesseract
+```
+
+---
+
+## ▶️ Usage
+
 ```bash
 streamlit run api_based_chatbot.py
 ```
 
 ---
 
-## 🔧 Configuration
+# 3. 📚 Document RAG Chatbot (`rag_chatbot.py`)
 
-### API Key Setup
+An intelligent Retrieval-Augmented Generation (RAG) chatbot that answers questions directly from uploaded PDF documents. Instead of relying solely on the LLM's pretrained knowledge, it retrieves relevant document chunks using semantic search and generates context-aware responses. 
 
-Both chatbots require a Google Gemini API key. Create a `config.toml` file in the project root:
+## ✨ Features
 
-```toml
-[api_keys]
-gemini = "your-api-key-here"
+* 📄 Upload PDF documents
+* ✂️ Automatic text chunking
+* 🧠 Google Gemini embeddings
+* 🗂️ FAISS vector database
+* 🔍 Semantic similarity search
+* 💬 Context-aware question answering
+* 📚 Displays retrieved document chunks
+* ⚡ Fast retrieval pipeline
+
+## ⚙️ How It Works
+
+```text
+Upload PDF
+     │
+     ▼
+Extract Text
+     │
+     ▼
+Chunk Document
+     │
+     ▼
+Generate Embeddings
+     │
+     ▼
+Store in FAISS
+     │
+     ▼
+User Question
+     │
+     ▼
+Similarity Search
+     │
+     ▼
+Relevant Chunks
+     │
+     ▼
+Gemini LLM
+     │
+     ▼
+Answer
 ```
 
-### Environment Requirements
+## 🛠 Requirements
 
-- **Tesseract OCR** (for neurorehabilitation chatbot):
-  - Windows: Install from [https://github.com/UB-Mannheim/tesseract/wiki](https://github.com/UB-Mannheim/tesseract/wiki)
-  - Update the path in `api_based_chatbot.py` if installation path differs
+* LangChain
+* FAISS
+* Google Gemini
+* PyPDFLoader
+* Streamlit
 
-### Lottie Animations
+## ▶️ Usage
 
-The neurorehabilitation chatbot uses JSON animation files:
-- `assets/api_animation.json`
-- `assets/apichatbot.json`
-
-Ensure these files are present in the `assets/` directory.
+```bash
+streamlit run rag_chatbot.py
+```
 
 ---
 
-## 📦 Installation
+# 4. 🌍 Multilingual Chatbot (`multi_lingual_chatbot.py`)
 
-1. Clone the repository:
-```bash
-git clone https://github.com/au01909/chatbots.git
-cd chatbots
+A multilingual translation assistant supporting numerous Indian languages with integrated text-to-speech. It translates user input using Google Translate and plays the translated audio using Google Text-to-Speech. 
+
+## ✨ Features
+
+* 🌐 Translation between 20+ Indian languages
+* 🔊 Voice playback of translated text
+* ⚡ Auto-play option
+* 📝 Live translation preview
+* 🎤 Audio generation using gTTS
+
+## ⚙️ How It Works
+
+```text
+Input Text
+     │
+     ▼
+Google Translate
+     │
+     ▼
+Translated Text
+     │
+     ▼
+Google Text-to-Speech
+     │
+     ▼
+Audio Playback
 ```
 
-2. Install dependencies:
+## 🛠 Requirements
+
+* googletrans
+* gTTS
+* Streamlit
+
+## ▶️ Usage
+
 ```bash
+streamlit run multi_lingual_chatbot.py
+```
+
+---
+
+# 5. 🎙️ Voice Assistant (`voice_chatbot.py`)
+
+A multimodal chatbot that supports both voice and text interactions. User speech is converted into text, processed by Gemini, and returned as both text and synthesized speech. 
+
+## ✨ Features
+
+* 🎤 Voice input
+* ⌨️ Text input
+* 🤖 Gemini-powered responses
+* 🔊 Automatic speech synthesis
+* 💬 Conversation history
+* 🎨 Responsive Streamlit interface
+
+## ⚙️ How It Works
+
+```text
+Voice/Text Input
+      │
+      ▼
+Speech Recognition
+      │
+      ▼
+Gemini API
+      │
+      ▼
+Response
+      │
+      ▼
+Google Text-to-Speech
+      │
+      ▼
+Audio Output
+```
+
+## 🛠 Requirements
+
+* SpeechRecognition
+* gTTS
+* Google Gemini
+* Streamlit
+
+## ▶️ Usage
+
+```bash
+streamlit run voice_chatbot.py
+```
+
+---
+
+# 6. ❤️ HeartPedia Keyword-Based Chatbot (`keyword_based_chatbot.py`)
+
+A lightweight medical information chatbot that provides educational explanations for predefined cardiovascular terms. It performs case-insensitive keyword matching against an internal dictionary to return curated content. 
+
+## ✨ Features
+
+* ❤️ Heart disease glossary
+* 🔎 Case-insensitive keyword matching
+* 📖 Educational definitions
+* ⚡ Instant responses
+* 🚫 Handles unknown terms gracefully
+
+## ⚙️ How It Works
+
+```text
+User Input
+     │
+     ▼
+Lowercase Conversion
+     │
+     ▼
+Dictionary Lookup
+     │
+     ├── Match Found
+     │       │
+     │       ▼
+     │  Return Definition
+     │
+     └── No Match
+             │
+             ▼
+      "Keyword Not Found"
+```
+
+## ▶️ Usage
+
+```bash
+streamlit run keyword_based_chatbot.py
+```
+
+---
+
+# 7. 🚆 Rule-Based Train Booking Chatbot (`rule_based_chatbot.py`)
+
+A rule-driven chatbot that simulates an interactive train ticket booking system. It guides users through passenger selection, station choices, fare calculation, and a mock payment workflow using predefined conversational logic. 
+
+## ✨ Features
+
+* 🚉 Guided booking flow
+* 👥 Passenger selection
+* 📍 Source and destination selection
+* 💰 Automatic fare calculation
+* 💳 Simulated payment
+* 🧾 Booking confirmation
+* 🔄 Session state management
+
+## ⚙️ How It Works
+
+```text
+Start Booking
+      │
+      ▼
+Passenger Count
+      │
+      ▼
+Departure Station
+      │
+      ▼
+Destination Station
+      │
+      ▼
+Fare Calculation
+      │
+      ▼
+Payment Simulation
+      │
+      ▼
+Booking Confirmation
+```
+
+## ▶️ Usage
+
+```bash
+streamlit run rule_based_chatbot.py
+```
+
+This format is much more consistent and gives each chatbot the same level of detail, making the README look polished and professional.
+
+
+# Installation
+
+```bash
+git clone https://github.com/au01909/chatbots.git
+
+cd chatbots
+
 pip install -r requirements.txt
 ```
 
-3. Set up configuration (see Configuration section above)
+---
 
-4. Run desired chatbot:
-```bash
-streamlit run data_analysis_chatbot.py
-# or
-streamlit run api_based_chatbot.py
+# Configure Gemini
+
+Create a `config.toml`
+
+```toml
+[api_keys]
+gemini = "YOUR_GEMINI_API_KEY"
 ```
 
----
-
-## 🛠️ Technology Stack
-
-- **Python 3.x**: Core programming language
-- **Streamlit**: Web application framework
-- **Google Gemini API**: AI model for intelligent responses
-- **Pandas**: Data manipulation and analysis
-- **Plotly**: Interactive data visualizations
-- **Pillow & Pytesseract**: Image processing and OCR
-- **Seaborn & Matplotlib**: Statistical visualizations
+The application expects the Gemini API key to be provided in this configuration file. 
 
 ---
 
-## 💡 Use Cases
+# Run
 
-### Data Analysis Chatbot
-- Business Intelligence: Analyze sales and performance data
-- Research: Explore survey responses and experimental data
-- Education: Interactive data exploration for learning
-- Prototyping: Quick data visualization without coding
+```bash
+streamlit run main.py
+```
 
-### Neurorehabilitation Assistant
-- Patient Recovery Planning: Personalized rehabilitation programs
-- Therapy Management: Structured exercise schedules
-- Medical Documentation: AI-assisted therapy plans
-- Patient Education: Information about recovery phases
+This launches the Chatbot Hub, where users can navigate between the Home page and the various chatbot implementations from a sidebar menu. 
 
 ---
 
-## 🔐 Privacy & Security
+# Learning Objectives
 
-- **Sensitive Data Redaction**: Phone numbers and other sensitive information are automatically redacted from prescription images
-- **Secure API Configuration**: API keys are stored in local config files (not tracked in git)
-- **User Data**: Information provided to the chatbots is processed securely through Google's API
+This repository demonstrates:
 
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Report bugs and issues
-- Suggest new features
-- Improve documentation
-- Optimize code
-
-Push improvements to the repository!
-
----
-
-## 📝 License
-
-Feel free to customize and use these chatbots for your needs.
+* Rule-Based Chatbots
+* Keyword Matching
+* Prompt Engineering
+* Generative AI
+* Retrieval-Augmented Generation
+* Vector Databases
+* Semantic Search
+* OCR
+* Speech Recognition
+* Text-to-Speech
+* Multilingual NLP
+* AI-powered Data Analytics
+* Streamlit Application Development
 
 ---
 
-## 🚦 Getting Started
+# Future Improvements
 
-1. Choose which chatbot fits your needs
-2. Follow the installation steps
-3. Configure your Gemini API key
-4. Run the chatbot with Streamlit
-5. Start exploring!
+* Conversation memory across chatbots
+* Multi-document RAG
+* Streaming LLM responses
+* Agentic workflows
+* Authentication
+* Chat history database
+* Docker deployment
+* Cloud hosting
+* Model selection (Gemini, OpenAI, Claude, Ollama)
+* Evaluation metrics
+* Fine-tuned domain models
+
+---
+
+# License
+
+This project is released under the MIT License.
+
+---
 
